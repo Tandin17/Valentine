@@ -1,0 +1,259 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fce4ec 0%, #ffcdd2 50%, #fce4ec 100%);
+    padding: 20px;
+}
+
+.card-wrapper {
+    position: relative;
+}
+
+.floating-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-heart {
+    position: absolute;
+    color: #ef5350;
+    opacity: 0.7;
+    animation: float ease-in-out infinite;
+}
+
+.envelope {
+    position: relative;
+    width: 384px;
+    height: 256px;
+    background: linear-gradient(135deg, #ef5350 0%, #d32f2f 100%);
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 4px solid #ffcdd2;
+    overflow: hidden;
+    transition: transform 0.7s ease-in-out;
+    cursor: pointer;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+.envelope.open {
+    transform: scale(0.95);
+}
+
+.envelope-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+}
+
+.pattern-line {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ffcdd2;
+    transform: rotate(45deg);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 192px solid transparent;
+    border-right: 192px solid transparent;
+    border-top: 120px solid #d32f2f;
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 33%;
+    background-color: #b71c1c;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.heart-seal {
+    position: absolute;
+    top: -80px;
+    left: -20px;
+    transition: opacity 0.7s ease-in-out;
+}
+
+.heart-seal.hidden {
+    opacity: 0;
+}
+
+.heart-icon {
+    width: 40px;
+    height: 40px;
+    color: #fce4ec;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.letter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 352px;
+    background: linear-gradient(135deg, #fff5f6 0%, #ffffff 100%);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ffcdd2;
+    transition: all 0.7s ease-in-out;
+    transform: translateY(0) scale(0.95) rotate(12deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.letter.open {
+    transform: translateY(0%) scale(1) rotate(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.letter-content {
+    text-align: center;
+}
+
+.heart-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.heart-icon.pulsing {
+    width: 48px;
+    height: 48px;
+    color: #ef5350;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ef5350, #f48fb1);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 24px;
+}
+
+.message {
+    color: #616161;
+    margin-bottom: 24px;
+}
+
+.poem {
+    font-family: serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.signature {
+    color: #ef5350;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.corner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ffcdd2;
+}
+
+.top-left {
+    top: 8px;
+    left: 8px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.top-right {
+    top: 8px;
+    right: 8px;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.bottom-left {
+    bottom: 8px;
+    left: 8px;
+    border-right: 0;
+    border-top: 0;
+}
+
+.bottom-right {
+    bottom: 8px;
+    right: 8px;
+    border-left: 0;
+    border-top: 0;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(200px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-800px) rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope {
+        width: 320px;
+        height: 213px;
+    }
+
+    .envelope-flap {
+        border-left-width: 160px;
+        border-right-width: 160px;
+        border-top-width: 100px;
+    }
+
+    .letter {
+        width: 288px;
+        padding: 24px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .poem {
+        font-size: 1rem;
+    }
+}
